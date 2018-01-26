@@ -83,4 +83,13 @@ let chocolateFrog;
     assert.deepEqual(harry.viewCompletedTasks(), [getByFluffy, devilsSnare]);
   })
 
+  it('hero can view tasks still to do', function() {
+    harry.completeTask(getByFluffy);
+    harry.completeTask(devilsSnare);
+    harry.completeTask(potions);
+    harry.completeTask(chess);
+    harry.completeTask(troll);
+    assert.deepEqual(harry.viewTasksToDo(), [keys, quirell]);
+  })
+
 })

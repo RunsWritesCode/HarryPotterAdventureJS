@@ -44,6 +44,10 @@ Hero.prototype.viewCompletedTasks = function () {
   return this.tasks.filter(task => task.completed === true);
 };
 
+Hero.prototype.viewTasksToDo = function () {
+  return this.tasks.filter(task => task.completed === false);
+};
+
 
 
 module.exports = Hero;
