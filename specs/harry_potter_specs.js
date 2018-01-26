@@ -1,6 +1,7 @@
 const assert = require('assert');
 const Hero = require('../hero');
 const Task = require('../task');
+const Food = require('../food');
 
 describe('Harry Potter', function() {
 
@@ -14,6 +15,10 @@ let chess;
 let troll;
 let potions
 let quirell;
+let food;
+let pumpkinPasties;
+let butterBeer;
+let chocolateFrog;
 
   beforeEach(function() {
     getByFluffy = new Task(6, 10, "knowledge", false);
@@ -25,6 +30,8 @@ let quirell;
     quirell = new Task(10, 9, "philosophers stone", false);
     var tasks = [getByFluffy, devilsSnare, keys, chess, troll, potions, quirell];
     harry = new Hero("Harry Potter", 10, "pumpkin pasties", tasks);
+    pumpkinPasties = new Food("pumpkin pasties", 4);
+    butterBeer = new Food("butter beer", 6);
   })
 
   it('can speak name', function() {
@@ -43,7 +50,15 @@ let quirell;
     assert.strictEqual(getByFluffy.completed, true);
   })
 
+  it('hero can eat food and increase health', function() {
+    harry.eatFood(butterBeer);
+    assert.strictEqual(harry.health, 16);
+  })
 
+  it('hero can eat favourite food and increase health', function() {
+    harry.eatFood(pumpkinPasties);
+    assert.strictEqual(harry.health, 16);
+  })
 
 
 
