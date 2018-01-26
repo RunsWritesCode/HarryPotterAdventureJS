@@ -101,4 +101,10 @@ let peter;
     assert.strictEqual(pumpkinPasties.poisoned, true);
   })
 
+  it('hero can eat poisonous food and lose health', function(){
+    peter.touchFood(pumpkinPasties);
+    harry.eatFood(pumpkinPasties);
+    assert.strictEqual(harry.health, 6);
+  })
+
 })
