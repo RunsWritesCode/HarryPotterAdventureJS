@@ -28,4 +28,22 @@ Hero.prototype.eatFood = function (food) {
   else this.health += food.replenishment_value;
 };
 
+Hero.prototype.sortTasksByDiff = function () {
+  return this.tasks.sort(function (a, b) {
+    return a.difficulty - b.difficulty;
+  })
+};
+
+Hero.prototype.sortTasksByUrgency = function () {
+  return this.tasks.sort(function (a, b) {
+    return a.urgency - b.urgency;
+  })
+};
+
+Hero.prototype.viewCompletedTasks = function () {
+  return this.tasks.filter(task => task.completed === true);
+};
+
+
+
 module.exports = Hero;
