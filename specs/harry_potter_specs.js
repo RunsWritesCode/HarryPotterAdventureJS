@@ -2,6 +2,7 @@ const assert = require('assert');
 const Hero = require('../hero');
 const Task = require('../task');
 const Food = require('../food');
+const Rat = require('../rat');
 
 describe('Harry Potter', function() {
 
@@ -19,6 +20,8 @@ let food;
 let pumpkinPasties;
 let butterBeer;
 let chocolateFrog;
+let rat;
+let peter;
 
   beforeEach(function() {
     getByFluffy = new Task(3, 10, "knowledge", false);
@@ -27,11 +30,12 @@ let chocolateFrog;
     chess = new Task(6, 3, "courage", false);
     troll = new Task(0, 0, "logic", false);
     potions = new Task(5, 2, "nettle wine", false);
-    quirell = new Task(10, 8, "philosophers stone", false);
+    quirell = new Task(10, 8, "philosopher's stone", false);
     var tasks = [getByFluffy, devilsSnare, keys, chess, troll, potions, quirell];
     harry = new Hero("Harry Potter", 10, "pumpkin pasties", tasks);
     pumpkinPasties = new Food("pumpkin pasties", 4);
     butterBeer = new Food("butter beer", 6);
+    peter = new Rat("Peter Pettigrew");
 
   })
 
@@ -90,6 +94,11 @@ let chocolateFrog;
     harry.completeTask(chess);
     harry.completeTask(troll);
     assert.deepEqual(harry.viewTasksToDo(), [keys, quirell]);
+  })
+
+  it('rat can touch food', function() {
+    peter.touchFood(pumpkinPasties);
+    assert.strictEqual(pumpkinPasties.poisoned, true);
   })
 
 })
