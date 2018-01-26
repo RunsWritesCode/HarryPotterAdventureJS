@@ -49,5 +49,4 @@ Hero.prototype.viewTasksToDo = function () {
 };
 
 
-
 module.exports = Hero;
