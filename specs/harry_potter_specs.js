@@ -38,7 +38,10 @@ let quirell;
     assert.strictEqual(harry.numberOfTasks(), 8);
   })
 
-
+  it('can complete task', function() {
+    harry.completeTask(getByFluffy);
+    assert.strictEqual(getByFluffy.completed, true);
+  })
 
 
 
