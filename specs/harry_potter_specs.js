@@ -3,6 +3,8 @@ const Hero = require('../hero');
 const Task = require('../task');
 const Food = require('../food');
 const Rat = require('../rat');
+const Spell = require('../spell');
+const Supervillain = require('../supervillain');
 
 describe('Harry Potter', function() {
 
@@ -22,6 +24,9 @@ let butterBeer;
 let chocolateFrog;
 let rat;
 let peter;
+let spell;
+let supervillain;
+let voldemort;
 
   beforeEach(function() {
     getByFluffy = new Task(3, 10, "knowledge", false);
@@ -31,11 +36,17 @@ let peter;
     troll = new Task(0, 0, "logic", false);
     potions = new Task(5, 2, "nettle wine", false);
     quirell = new Task(10, 8, "philosopher's stone", false);
+    alohomora = new Spell("Alohomora", 4);
+    expectoPatronum = new Spell("Expecto patronum", 9);
+    bombardoMaxima = new Spell("Bombarda Maxima", 20);
+    crucio = new Spell("Crucio", 50);
     var tasks = [getByFluffy, devilsSnare, keys, chess, troll, potions, quirell];
-    harry = new Hero("Harry Potter", 10, "pumpkin pasties", tasks);
+    var spells = [alohomora, expectoPatronum, bombardoMaxima];
+    harry = new Hero("Harry Potter", 100, "pumpkin pasties", tasks, spells);
     pumpkinPasties = new Food("pumpkin pasties", 4);
     butterBeer = new Food("butter beer", 6);
     peter = new Rat("Peter Pettigrew");
+    voldemort = new Supervillain("Voldemort", 10, 100);
 
   })
 
@@ -57,18 +68,18 @@ let peter;
 
   it('hero can eat food and increase health', function() {
     harry.eatFood(butterBeer);
-    assert.strictEqual(harry.health, 16);
+    assert.strictEqual(harry.health, 106);
   })
 
   it('hero can eat favourite food and increase health', function() {
     harry.eatFood(pumpkinPasties);
-    assert.strictEqual(harry.health, 16);
+    assert.strictEqual(harry.health, 106);
   })
 
   it('hero can eat favourite food and not favs and increase health', function() {
     harry.eatFood(pumpkinPasties);
     harry.eatFood(butterBeer);
-    assert.strictEqual(harry.health, 22);
+    assert.strictEqual(harry.health, 112);
   })
 
   it('hero can sort tasks by difficulty', function() {
@@ -104,7 +115,27 @@ let peter;
   it('hero can eat poisonous food and lose health', function(){
     peter.touchFood(pumpkinPasties);
     harry.eatFood(pumpkinPasties);
-    assert.strictEqual(harry.health, 6);
+    assert.strictEqual(harry.health, 96);
+  })
+
+  it('hero can use spell to increase health', function() {
+    harry.castSpell(expectoPatronum);
+    assert.strictEqual(harry.health, 109);
+  })
+
+  it('supervillain can take damage', function(){
+    voldemort.loseHealth(expectoPatronum);
+    assert.strictEqual(voldemort.health, 91);
+  })
+
+  it('hero can take damage', function() {
+    harry.loseHealth(crucio);
+    assert.strictEqual(harry.health, 50);
+  })
+
+  xit('hero can fight supervillain', function() {
+    harry.castSpell(bombardoMaxima);
+
   })
 
 })

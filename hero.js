@@ -1,8 +1,9 @@
-const Hero = function(name, health, fav_food, tasks) {
+const Hero = function(name, health, fav_food, tasks, spells) {
   this.name = name;
-  this.health = 10;
+  this.health = 100;
   this.fav_food = fav_food;
   this.tasks = tasks;
+  this.spells = spells;
 }
 
 Hero.prototype.speakname = function() {
@@ -53,6 +54,15 @@ Hero.prototype.viewCompletedTasks = function () {
 Hero.prototype.viewTasksToDo = function () {
   return this.tasks.filter(task => task.completed === false);
 };
+
+Hero.prototype.castSpell = function (spell) {
+  this.health += spell.power;
+};
+
+Hero.prototype.loseHealth = function (spell) {
+  this.health -= spell.power;
+};
+
 
 
 module.exports = Hero;
