@@ -133,9 +133,13 @@ let voldemort;
     assert.strictEqual(harry.health, 50);
   })
 
-  xit('hero can fight supervillain', function() {
+  it('hero can fight supervillain', function() {
     harry.castSpell(bombardoMaxima);
-
+    voldemort.loseHealth(bombardoMaxima);
+    voldemort.castSpell(crucio);
+    harry.loseHealth(crucio);
+    assert.strictEqual(harry.health, 70);
+    assert.strictEqual(voldemort.health, 130);
   })
 
 })

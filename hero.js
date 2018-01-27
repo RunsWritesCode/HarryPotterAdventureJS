@@ -61,6 +61,7 @@ Hero.prototype.castSpell = function (spell) {
 
 Hero.prototype.loseHealth = function (spell) {
   this.health -= spell.power;
+
 };
 
 
