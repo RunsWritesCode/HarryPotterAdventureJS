@@ -147,4 +147,10 @@ let voldemort;
     assert.strictEqual(voldemort.health, 50);
   })
 
+  it('harry can use an unforgiveable', function() {
+    harry.castSpell(crucio);
+    assert.strictEqual(harry.health, 50);
+  })
+
+  
 })
