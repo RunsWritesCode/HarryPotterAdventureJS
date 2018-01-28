@@ -56,7 +56,12 @@ Hero.prototype.viewTasksToDo = function () {
 };
 
 Hero.prototype.castSpell = function (spell) {
+  if (spell.unforgiveable === false){
   this.health += spell.power;
+  }
+  else if (spell.unforgiveable === true){
+    this.health -= spell.power;
+  }
 };
 
 Hero.prototype.loseHealth = function (spell) {

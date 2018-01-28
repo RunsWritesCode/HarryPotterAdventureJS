@@ -36,10 +36,10 @@ let voldemort;
     troll = new Task(0, 0, "logic", false);
     potions = new Task(5, 2, "nettle wine", false);
     quirell = new Task(10, 8, "philosopher's stone", false);
-    alohomora = new Spell("Alohomora", 4);
-    expectoPatronum = new Spell("Expecto patronum", 9);
-    bombardoMaxima = new Spell("Bombarda Maxima", 20);
-    crucio = new Spell("Crucio", 50);
+    alohomora = new Spell("Alohomora", 4, false);
+    expectoPatronum = new Spell("Expecto patronum", 9, false);
+    bombardoMaxima = new Spell("Bombarda Maxima", 20, false);
+    crucio = new Spell("Crucio", 50, true);
     var tasks = [getByFluffy, devilsSnare, keys, chess, troll, potions, quirell];
     var spells = [alohomora, expectoPatronum, bombardoMaxima];
     harry = new Hero("Harry Potter", 100, "pumpkin pasties", tasks, spells);
@@ -139,7 +139,12 @@ let voldemort;
     voldemort.castSpell(crucio);
     harry.loseHealth(crucio);
     assert.strictEqual(harry.health, 70);
-    assert.strictEqual(voldemort.health, 130);
+    assert.strictEqual(voldemort.health, 30);
+  })
+
+  it('using an unforgiveable spell decreases health', function() {
+    voldemort.castSpell(crucio);
+    assert.strictEqual(voldemort.health, 50);
   })
 
 })

@@ -9,8 +9,14 @@ Supervillain.prototype.loseHealth = function (spell) {
 };
 
 Supervillain.prototype.castSpell = function (spell) {
+  if (spell.unforgiveable === false){
   this.health += spell.power;
+  }
+  else if (spell.unforgiveable === true){
+    this.health -= spell.power;
+  }
 };
+
 
 
 module.exports = Supervillain;
