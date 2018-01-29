@@ -6,5 +6,4 @@ const Task = function(difficulty, urgency, reward, completed) {
 }
 
 
-
 module.exports = Task;

@@ -23,13 +23,13 @@ Hero.prototype.completeTask = function (task) {
 };
 
 Hero.prototype.eatFood = function (food) {
-  if (food.name == this.fav_food && food.poisoned == false){
+  if (food.name == this.fav_food && !food.poisoned){
     this.health += (food.replenishment_value * 1.5)
   }
-  else if (food.name == this.fav_food && food.poisoned == true){
+  else if (food.name == this.fav_food && food.poisoned){
     this.health -= food.replenishment_value;
   }
-  else if (food.poisoned == true) {
+  else if (food.poisoned) {
     this.health -= food.replenishment_value;
   }
   else this.health += food.replenishment_value;
@@ -56,10 +56,10 @@ Hero.prototype.viewTasksToDo = function () {
 };
 
 Hero.prototype.castSpell = function (spell) {
-  if (spell.unforgiveable === false){
+  if (!spell.unforgiveable){
   this.health += spell.power;
   }
-  else if (spell.unforgiveable === true){
+  else if (spell.unforgiveable){
     this.health -= spell.power;
   }
 };

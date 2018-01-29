@@ -9,10 +9,10 @@ Supervillain.prototype.loseHealth = function (spell) {
 };
 
 Supervillain.prototype.castSpell = function (spell) {
-  if (spell.unforgiveable === false){
+  if (!spell.unforgiveable){
   this.health += spell.power;
   }
-  else if (spell.unforgiveable === true){
+  else if (spell.unforgiveable){
     this.health -= spell.power;
   }
 };
