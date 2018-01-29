@@ -152,5 +152,4 @@ let voldemort;
     assert.strictEqual(harry.health, 50);
   })
 
-  
 })
